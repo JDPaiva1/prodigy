@@ -8,6 +8,7 @@
           :wordId="veil.id"
           :key="veil.id"
           :btnDisabledClass="veil.disabledClassIsActive"
+          :btnActiveClass="btnActiveClassWord"
           @speak="wordEvent = $event; validateMatch()"/>
       </div>
     </div>
@@ -19,6 +20,7 @@
         :imageURL="veil.imageURL"
         :imageId="veil.id"
         :btnDisabledClass="veil.disabledClassIsActive"
+        :btnActiveClass="btnActiveClassImage"
         @speak="imageEvent = $event; validateMatch()"/>
     </div>
   </div>
@@ -36,10 +38,8 @@ export default {
       veils: {},
       wordEvent: undefined,
       imageEvent: undefined,
-      btnDisabledClass: {
-        id: '',
-        isActive: false,
-      },
+      btnActiveClassWord: '',
+      btnActiveClassImage: '',
     };
   },
   components: {
@@ -65,6 +65,8 @@ export default {
       } else {
         console.log('choose the couple');
       }
+      this.btnActiveClassWord = this.wordEvent;
+      this.btnActiveClassImage = this.imageEvent;
     },
     restoreEvents() {
       this.wordEvent = undefined;

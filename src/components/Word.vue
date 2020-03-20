@@ -1,7 +1,7 @@
 <template>
     <a
       class="collection-item waves-effect waves-teal"
-      :class="{'active': isActive, 'btn': btnDisabledClass, 'disabled': btnDisabledClass}"
+      :class="{'active': activeClass(), 'btn': btnDisabledClass, 'disabled': btnDisabledClass}"
       @click="isActive = true; $emit('speak', wordId)">
       {{wordName}}
     </a>
@@ -14,11 +14,18 @@ export default {
     wordName: String,
     wordId: String,
     btnDisabledClass: Boolean,
+    btnActiveClass: String,
   },
-  data() {
-    return {
-      isActive: false,
-    };
+  methods: {
+    activeClass() {
+      let isActive;
+      if (this.btnActiveClass === this.wordId) {
+        isActive = true;
+      } else {
+        isActive = false;
+      }
+      return isActive;
+    },
   },
 };
 </script>
