@@ -1,5 +1,8 @@
 <template>
   <div class="row">
+    <span v-if="mistakes != 0" class="new badge red" :data-badge-caption="errorBadgeCaption">
+      {{ mistakes }}
+    </span>
     <div class="col s12 m4">
       <div class="collection">
         <Word
@@ -40,6 +43,8 @@ export default {
       imageEvent: undefined,
       btnActiveClassWord: '',
       btnActiveClassImage: '',
+      mistakes: 0,
+      errorBadgeCaption: 'error',
     };
   },
   components: {
@@ -55,14 +60,15 @@ export default {
     validateMatch() {
       if (this.wordEvent !== undefined && this.imageEvent !== undefined) {
         if (this.wordEvent === this.imageEvent) {
-          console.log('is correct');
           this.defineClass(this.wordEvent);
           this.restoreEvents();
         } else {
-          console.log('is wrong');
           this.restoreEvents();
+          this.mistakes += 1;
+          this.errorBadgeCaption = this.mistakes === 1 ? 'error' : 'errores';
         }
       } else {
+        // eslint-disable-next-line
         console.log('choose the couple');
       }
       this.btnActiveClassWord = this.wordEvent;
