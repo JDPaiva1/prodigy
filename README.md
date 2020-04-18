@@ -1,4 +1,4 @@
-# velo
+# PRODIGy
 
 ## Project setup
 ```
