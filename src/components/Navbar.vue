@@ -5,6 +5,9 @@
     </router-link> |
     <router-link class="waves-effect waves-light btn" to="/game">
       <i class="material-icons left">videogame_asset</i>Game
+    </router-link> |
+    <router-link class="waves-effect waves-light btn" to="/about">
+      <i class="material-icons left">people</i>About Us
     </router-link>
   </div>
 </template>
