@@ -1,19 +1,19 @@
 <template>
   <div id="app">
+    <LogoBar/>
     <Navbar/>
     <router-view/>
-    <Footer/>
   </div>
 </template>
 
 <script>
 import Navbar from '@/components/Navbar.vue';
-import Footer from '@/components/Footer.vue';
+import LogoBar from '@/components/LogoBar.vue';
 
 export default {
   components: {
     Navbar,
-    Footer,
+    LogoBar,
   },
 };
 </script>

@@ -23,9 +23,9 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.page-footer {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-}
+// .page-footer {
+//   width: 100%;
+//   position: absolute;
+//   bottom: 0;
+// }
 </style>
