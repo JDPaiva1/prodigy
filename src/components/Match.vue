@@ -26,6 +26,7 @@
         :btnActiveClass="btnActiveClassImage"
         @speak="imageEvent = $event; validateMatch()"/>
     </div>
+    <Modal :showModal="showModal" @speak="showModal = $event"/>
   </div>
 </template>
 
@@ -33,9 +34,15 @@
 import firebase from 'firebase/app';
 import Word from './Word.vue';
 import ImageButton from './ImageButton.vue';
+import Modal from './Modal.vue';
 
 export default {
   name: 'Match',
+  components: {
+    Word,
+    ImageButton,
+    Modal,
+  },
   data() {
     return {
       veils: {},
@@ -45,11 +52,9 @@ export default {
       btnActiveClassImage: '',
       mistakes: 0,
       errorBadgeCaption: 'error',
+      successes: 0,
+      showModal: false,
     };
-  },
-  components: {
-    Word,
-    ImageButton,
   },
   mounted() {
     firebase.database().ref('veils').once('value', (snapshot) => {
@@ -62,10 +67,12 @@ export default {
         if (this.wordEvent === this.imageEvent) {
           this.defineClass(this.wordEvent);
           this.restoreEvents();
+          this.successes += 1;
+          this.showModal = this.successes === Object.keys(this.veils).length;
         } else {
           this.restoreEvents();
           this.mistakes += 1;
-          this.errorBadgeCaption = this.mistakes === 1 ? 'error' : 'errores';
+          this.errorBadgeCaption = this.mistakes === 1 ? 'error' : 'errors';
         }
       } else {
         // eslint-disable-next-line

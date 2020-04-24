@@ -1,5 +1,5 @@
 <template>
-  <div class="page-footer">
+  <div class="page-footer teal">
     <div class="container valign-wrapper center-align">
       <div class="row valign-wrapper">
         <div class="col s6 l4">
@@ -23,9 +23,9 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.purple.darken-3 {
-  .container.valign-wrapper.center-align {
-    margin: 0 auto;
-  }
+.page-footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }
 </style>
