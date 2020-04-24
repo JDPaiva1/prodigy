@@ -6,7 +6,7 @@
     <div class="col s12 m4">
       <div class="collection">
         <Word
-          v-for="veil in veils"
+          v-for="veil in veilsOrderedList"
           :wordName="veil.name"
           :wordId="veil.id"
           :key="veil.id"
@@ -31,7 +31,6 @@
 </template>
 
 <script>
-import firebase from 'firebase/app';
 import Word from './Word.vue';
 import ImageButton from './ImageButton.vue';
 import Modal from './Modal.vue';
@@ -43,9 +42,9 @@ export default {
     ImageButton,
     Modal,
   },
+  props: ['veils', 'veilsOrderedList'],
   data() {
     return {
-      veils: {},
       wordEvent: undefined,
       imageEvent: undefined,
       btnActiveClassWord: '',
@@ -56,11 +55,6 @@ export default {
       showModal: false,
     };
   },
-  mounted() {
-    firebase.database().ref('veils').once('value', (snapshot) => {
-      this.veils = snapshot.val();
-    });
-  },
   methods: {
     validateMatch() {
       if (this.wordEvent !== undefined && this.imageEvent !== undefined) {
@@ -68,7 +62,7 @@ export default {
           this.defineClass(this.wordEvent);
           this.restoreEvents();
           this.successes += 1;
-          this.showModal = this.successes === Object.keys(this.veils).length;
+          this.showModal = this.successes === this.veils.length;
         } else {
           this.restoreEvents();
           this.mistakes += 1;
@@ -86,7 +80,11 @@ export default {
       this.imageEvent = undefined;
     },
     defineClass(id) {
-      this.veils[id].disabledClassIsActive = true;
+      for (let i = 0; i < this.veils.length; i += 1) {
+        if (this.veils[i].id === id) {
+          this.veils[i].disabledClassIsActive = true;
+        }
+      }
     },
   },
 };
