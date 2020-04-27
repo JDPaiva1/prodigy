@@ -30,7 +30,7 @@ export default {
 <style lang="scss" scoped>
 .modal {
   align-items: flex-start;
-  background-color: rgba(0,0,0,.75);
+  background-color: $transparent-75;
   display: flex;
   height: 100vh;
   justify-content: center;
@@ -45,9 +45,9 @@ export default {
     z-index: 2;
     .modal-content {
       transform: translateY(100px);
-      background-color: #fff;
+      background-color: $gray-100;
       border-radius: 2px;
-      box-shadow: 0 8px 16px 0 rgba(0,0,0,.25);
+      box-shadow: 0 8px 16px 0 $transparent-25;
       display: inline-block;
       min-width: 320px;
       max-width: 480px;
@@ -58,7 +58,7 @@ export default {
         position: relative;
         text-align: center;
         h3 {
-          color: #444;
+          color: $text-color;
           font-family: Arial, Helvetica, sans-serif;
           font-size: 14px;
           font-weight: 600;

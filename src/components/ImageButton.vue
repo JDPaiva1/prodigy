@@ -4,6 +4,10 @@
     :class="{'disabled': btnDisabledClass, 'active': activeClass()}"
     @click="$emit('speak', imageId)">
     <img :src="imageURL" class="responsive-img">
+    <div v-if="btnDisabledClass" class="text-center">
+      <!-- <i class="material-icons medium">done</i> -->
+      <h3>{{ imageName }}</h3>
+    </div>
   </a>
 </template>
 
@@ -13,6 +17,7 @@ export default {
   props: {
     imageURL: String,
     imageId: String,
+    imageName: String,
     btnDisabledClass: Boolean,
     btnActiveClass: String,
   },
@@ -31,17 +36,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-a.disabled {
-  pointer-events: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  cursor: default;
-  img.responsive-img {
+a.waves-effect.waves-teal.hoverable {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  &.disabled {
+    pointer-events: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    cursor: default;
+    img.responsive-img {
     filter: grayscale(100%);
+    }
   }
-}
-a.active {
-  background-color: #26a69a;
-  color: #eafaf9;
+  &.active {
+    background-color: $background-color;
+  }
+  .text-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: $gray-100;
+    font-size: 2em;
+  }
 }
 </style>

@@ -21,6 +21,6 @@ export default {
 <style lang="scss">
 #app {
   text-align: center;
-  color: #2c3e50;
+  color: $text-color;
 }
 </style>

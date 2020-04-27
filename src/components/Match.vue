@@ -22,6 +22,7 @@
         class="col s6 l4 image-container"
         :imageURL="veil.imageURL"
         :imageId="veil.id"
+        :imageName="veil.name"
         :btnDisabledClass="veil.disabledClassIsActive"
         :btnActiveClass="btnActiveClassImage"
         @speak="imageEvent = $event; validateMatch()"/>
