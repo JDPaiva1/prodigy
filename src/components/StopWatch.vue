@@ -3,11 +3,11 @@
     <button class="btn-floating btn-small" @click="start">
       <i class="material-icons">play_arrow</i>
     </button>
-    <button class="btn-floating btn-small middle" @click="stop">
-      <i class="material-icons">stop</i>
+    <button class="btn-floating btn-small" @click="stop">
+      <i class="material-icons">pause</i>
     </button>
     <button class="btn-floating btn-small" @click="reset">
-      <i class="material-icons">restore</i>
+      <i class="material-icons">settings_backup_restore</i>
     </button>
     <p>{{formattedElapsedTime}}</p>
   </div>
@@ -46,7 +46,6 @@ export default {
       clearInterval(this.timer);
     },
     reset() {
-      // this.elapsedTime = 0;
       this.$router.go();
     },
   },

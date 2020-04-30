@@ -8,10 +8,10 @@
       <i class="material-icons left">videogame_asset</i>
       {{ gameName }}
     </router-link> |
-    <router-link class="waves-effect waves-light btn" :to="language + 'about'">
+    <!-- <router-link class="waves-effect waves-light btn" :to="language + 'about'">
       <i class="material-icons left">people</i>
       {{ aboutName }}
-    </router-link> |
+    </router-link> | -->
     <router-link class="waves-effect waves-light btn" :to="languageHref">
       {{ languageName }}
     </router-link>
@@ -23,16 +23,15 @@ export default {
   name: 'Navbar',
   data() {
     return {
-      language: '/',
-      languageHref: '/es',
-      languageName: 'ES',
-      homeName: 'Home',
-      gameName: 'Game',
-      aboutName: 'About Us',
+      language: '',
+      languageHref: '',
+      languageName: '',
+      homeName: '',
+      gameName: '',
+      aboutName: '',
     };
   },
   created() {
-    console.log(window.location.pathname);
     this.changeLanguage(window.location.pathname);
   },
   watch: {
