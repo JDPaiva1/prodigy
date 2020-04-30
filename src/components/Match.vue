@@ -1,8 +1,6 @@
 <template>
   <div class="row">
-    <span v-if="mistakes != 0" class="new badge red" :data-badge-caption="errorBadgeCaption">
-      {{ mistakes }}
-    </span>
+    <Keypad :successes="successes" :mistakes="mistakes"/>
     <div class="col s12 m4">
       <div class="collection">
         <Word
@@ -34,6 +32,7 @@
 <script>
 import Word from './Word.vue';
 import ImageButton from './ImageButton.vue';
+import Keypad from './Keypad.vue';
 import Modal from './Modal.vue';
 
 export default {
@@ -41,6 +40,7 @@ export default {
   components: {
     Word,
     ImageButton,
+    Keypad,
     Modal,
   },
   props: ['veils', 'veilsOrderedList'],
@@ -50,9 +50,8 @@ export default {
       imageEvent: undefined,
       btnActiveClassWord: '',
       btnActiveClassImage: '',
-      mistakes: 0,
-      errorBadgeCaption: 'error',
       successes: 0,
+      mistakes: 0,
       showModal: false,
     };
   },
@@ -67,11 +66,7 @@ export default {
         } else {
           this.restoreEvents();
           this.mistakes += 1;
-          this.errorBadgeCaption = this.mistakes === 1 ? 'error' : 'errors';
         }
-      } else {
-        // eslint-disable-next-line
-        console.log('choose the couple');
       }
       this.btnActiveClassWord = this.wordEvent;
       this.btnActiveClassImage = this.imageEvent;
