@@ -21,7 +21,7 @@ export default {
   props: {
     showModal: Boolean,
     mistakes: Number,
-    timer: Date,
+    timer: String,
   },
   data() {
     return {

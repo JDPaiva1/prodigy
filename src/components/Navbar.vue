@@ -8,10 +8,6 @@
       <i class="material-icons left">videogame_asset</i>
       {{ gameName }}
     </router-link> |
-    <!-- <router-link class="waves-effect waves-light btn" :to="language + 'about'">
-      <i class="material-icons left">people</i>
-      {{ aboutName }}
-    </router-link> | -->
     <router-link class="waves-effect waves-light btn" :to="languageHref">
       {{ languageName }}
     </router-link>
@@ -41,14 +37,15 @@ export default {
   },
   methods: {
     changeLanguage(path) {
-      if (path === '/' || path === '/game') {
+      const regExp = new RegExp(/^\/es/);
+      if (regExp.test(path) === false) {
         this.language = '/';
         this.languageHref = '/es';
         this.languageName = 'ES';
         this.homeName = 'Home';
         this.gameName = 'Game';
         this.aboutName = 'About Us';
-      } else if (path === '/es' || path === '/es/game') {
+      } else if (regExp.test(path)) {
         this.language = '/es/';
         this.languageHref = '/';
         this.languageName = 'EN';

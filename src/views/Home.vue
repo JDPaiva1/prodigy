@@ -1,8 +1,15 @@
 <template>
-  <div class="home">
-    <h2>{{ instructions.title }}</h2>
-    <h4>{{ instructions.description }}</h4>
-    <img alt="Vue logo" src="../assets/logo.png">
+  <div class="home container">
+    <div class="row">
+      <h3 class="margin">{{ homeData.name }}</h3>
+      <h4>{{ homeData.programName }}</h4>
+    </div>
+    <hr width="30%"/>
+    <div class="section">
+      <h4>{{ homeData.instructionTitle }}</h4>
+      <h5 class="margin">{{ homeData.instruction }}</h5>
+    </div>
+      <img  class="responsive-img" :src="homeData.logo" alt="logo" width="400">
   </div>
 </template>
 
@@ -13,7 +20,7 @@ export default {
   name: 'Home',
   data() {
     return {
-      instructions: {},
+      homeData: {},
     };
   },
   mounted() {
@@ -29,9 +36,17 @@ export default {
   methods: {
     getData(refChild) {
       firebase.database().ref('home').child(refChild).once('value', (snapshot) => {
-        this.instructions = snapshot.val();
+        this.homeData = snapshot.val();
       });
     },
   },
 };
 </script>
+
+<style lang="scss" scoped>
+div.home {
+  h2.margin {
+    margin: 1.5em 0 1.5em;
+  }
+}
+</style>

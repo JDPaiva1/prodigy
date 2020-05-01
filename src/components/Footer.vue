@@ -60,12 +60,13 @@ export default {
   },
   methods: {
     creditsTitles(path) {
-      if (path === '/' || path === '/game') {
+      const regExp = new RegExp(/^\/es/);
+      if (regExp.test(path) === false) {
         this.researchTeam = 'Research team:';
         this.documentation = 'Documentation:';
         this.costumeDesigner = 'Costume designer:';
         this.developer = 'Developed by';
-      } else if (path === '/es' || path === '/es/game') {
+      } else if (regExp.test(path)) {
         this.researchTeam = 'Equipo de investigación:';
         this.documentation = 'Documentación:';
         this.costumeDesigner = 'Vestuario:';
