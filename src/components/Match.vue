@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <Keypad :successes="successes" :mistakes="mistakes"/>
+    <Keypad :successes="successes" :mistakes="mistakes" @speak="timer = $event"/>
     <div class="col s12 m4">
       <div class="collection">
         <Word
@@ -25,7 +25,11 @@
         :btnActiveClass="btnActiveClassImage"
         @speak="imageEvent = $event; validateMatch()"/>
     </div>
-    <Modal :showModal="showModal" @speak="showModal = $event"/>
+    <Modal
+      :showModal="showModal"
+      :mistakes="mistakes"
+      :timer="timer"
+      @speak="showModal = $event"/>
   </div>
 </template>
 
@@ -53,6 +57,7 @@ export default {
       successes: 0,
       mistakes: 0,
       showModal: false,
+      timer: undefined,
     };
   },
   methods: {

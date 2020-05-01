@@ -2,11 +2,13 @@
   <div class="modal" :class="{'open': showModal}">
     <div class="modal-content">
       <header class="modal-header">
-        <h3>You WIN!!</h3>
+        <h3>{{ winMessage }}</h3>
+        <p>{{`${errorMessage} ${mistakes}`}}</p>
+        <p>{{`${timeMessage} ${timer}`}}</p>
       </header>
       <article class="modal-body">
         <a class="waves-effect waves-light btn" @click="$emit('speak', close)">
-          <i class="material-icons left">close</i>Close
+          <i class="material-icons left">close</i>
         </a>
       </article>
     </div>
@@ -18,11 +20,32 @@ export default {
   name: 'Modal',
   props: {
     showModal: Boolean,
+    mistakes: Number,
+    timer: Date,
   },
   data() {
     return {
       close: false,
+      winMessage: '',
+      errorMessage: '',
+      timeMessage: '',
     };
+  },
+  mounted() {
+    this.changeMessages(window.location.pathname);
+  },
+  methods: {
+    changeMessages(path) {
+      if (path === '/game') {
+        this.winMessage = 'Good job!!';
+        this.errorMessage = 'errors:';
+        this.timeMessage = 'time:';
+      } else if (path === '/es/game') {
+        this.winMessage = '¡Buen trabajo!';
+        this.errorMessage = 'errores:';
+        this.timeMessage = 'tiempo:';
+      }
+    },
   },
 };
 </script>
