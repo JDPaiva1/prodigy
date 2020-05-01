@@ -1,13 +1,13 @@
 <template>
   <div class="col s12">
     <div class="col s12 m11">
-      <button class="btn-floating btn-small" @click="start">
+      <button class="btn-floating btn-small waves-effect waves-light" @click="start">
         <i class="material-icons">play_arrow</i>
       </button>
-      <button class="btn-floating btn-small" @click="stop">
+      <button class="btn-floating btn-small waves-effect waves-light" @click="stop">
         <i class="material-icons">pause</i>
       </button>
-      <button class="btn-floating btn-small" @click="reset">
+      <button class="btn-floating btn-small waves-effect waves-light" @click="reset">
         <i class="material-icons">settings_backup_restore</i>
       </button>
       <p>{{ formattedElapsedTime }}</p>
@@ -82,10 +82,16 @@ export default {
 <style lang="scss" scoped>
 div {
   button {
+    &.btn-floating.btn-small {
+      background-color: $primary-color;
+    }
     margin: 0 .5em;
   }
   span.badge {
     margin: .5em auto;
+    &.new {
+      background-color: $primary-color;
+    }
   }
 }
 </style>

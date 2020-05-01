@@ -1,6 +1,6 @@
 <template>
     <a
-      class="collection-item waves-effect waves-teal"
+      class="collection-item waves-effect waves-purple"
       :class="{'active': activeClass(), 'btn': btnDisabledClass, 'disabled': btnDisabledClass}"
       @click="isActive = true; $emit('speak', wordId)">
       {{wordName}}
@@ -29,3 +29,13 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.collection-item.waves-effect {
+  color: $primary-color;
+  &.active {
+    background-color: $primary-color;
+    color: #eafaf9;
+  }
+}
+</style>

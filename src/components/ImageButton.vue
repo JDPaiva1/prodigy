@@ -1,6 +1,6 @@
 <template>
   <a
-    class="waves-effect waves-teal hoverable"
+    class="waves-effect waves-purple hoverable"
     :class="{'disabled': btnDisabledClass, 'active': activeClass()}"
     @click="$emit('speak', imageId)">
     <img :src="imageURL" class="responsive-img">
@@ -36,7 +36,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-a.waves-effect.waves-teal.hoverable {
+a.waves-effect.hoverable {
   position: relative;
   display: inline-block;
   text-align: center;
@@ -50,7 +50,7 @@ a.waves-effect.waves-teal.hoverable {
     }
   }
   &.active {
-    background-color: $background-color;
+    background-color: $primary-color;
     box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   }
   .text-center {

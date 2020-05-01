@@ -64,6 +64,7 @@ export default {
   a {
     font-weight: bold;
     color: $text-color;
+    background-color: $primary-color;
   }
 }
 </style>

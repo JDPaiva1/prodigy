@@ -7,7 +7,9 @@
         <p>{{`${timeMessage} ${timer}`}}</p>
       </header>
       <article class="modal-body">
-        <a class="waves-effect waves-light btn" @click="$emit('speak', close)">
+        <a
+          class="btn btn-floating waves-effect waves-light"
+          @click="$emit('speak', close)">
           <i class="material-icons left">close</i>
         </a>
       </article>
@@ -76,6 +78,11 @@ export default {
       max-width: 480px;
       transition: transform 450ms ease;
       width: 100%;
+      .modal-body {
+        .btn.waves-effect {
+          background-color: $primary-color;
+        }
+      }
       .modal-header {
         padding: 20px;
         position: relative;
