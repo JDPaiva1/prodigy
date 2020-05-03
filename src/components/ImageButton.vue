@@ -5,7 +5,6 @@
     @click="$emit('speak', imageId)">
     <img :src="imageURL" class="responsive-img">
     <div v-if="btnDisabledClass" class="text-center">
-      <!-- <i class="material-icons medium">done</i> -->
       <h3>{{ imageName }}</h3>
     </div>
   </a>
